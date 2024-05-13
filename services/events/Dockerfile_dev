@@ -1,4 +1,7 @@
-FROM node:lts-alpine3.17
+FROM alpine:3.18
+
+ENV NODE_VERSION 21.7.3
+
 WORKDIR /src/app
 COPY ./package*.json ./
 RUN npm ci

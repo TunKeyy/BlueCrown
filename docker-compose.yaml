@@ -24,23 +24,26 @@ services:
       HASURA_GRAPHQL_DEV_MODE: "true"
       HASURA_GRAPHQL_ADMIN_SECRET: 123456
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ACTION_BASE_URL: http://events:9000
 
   events: 
     build:
       context: ./services/events
       dockerfile: Dockerfile_dev
+    ports:
+    - "9000:9000"
     volumes:
     - ./services/events:/src/app
-    - ./src/app/node_modules/
+    - /src/app/node_modules/
     - ./services/shared:/src/shared
     environment:
       NODE_TLS_REJECT_UNAUTHORIZED: 0
-      LOG_NAME: daikin_iot_events
-      GOOGLE_APPLICATION_CREDENTIALS: /google-cert.json
-      LEVEL_LOG_GOOGLE: ${LEVEL_LOG_GOOGLE}
-      LEVEL_LOG: ${LEVEL_LOG}
+      LOG_NAME: blue-crown
+      # GOOGLE_APPLICATION_CREDENTIALS: /google-cert.json
+      # LEVEL_LOG_GOOGLE: ${LEVEL_LOG_GOOGLE}
+      # LEVEL_LOG: ${LEVEL_LOG}
       NODE_ENV: ${NODE_ENV}
-      SERVICE_LOG: "true"
+      # SERVICE_LOG: "true"
 
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}

@@ -1,4 +1,4 @@
-import { initConfig } from "../../shared";
+import { initConfig } from "shared";
 
 export const config = initConfig<{
   readonly POSTGRES_USER: string;

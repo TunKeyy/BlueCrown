@@ -7,13 +7,6 @@
     "moment-timezone": "^0.5.43",
     "shared": "file:../shared"
   },
-  "scripts": {
-    "build": "tsc",
-    "lint": "eslint '*/**/*.{json,ts}' --fix",
-    "lint-staged": "lint-staged",
-    "start": "node --enable-source-maps dist/index.js",
-    "start:dev": "nodemon"
-  },
   "author": "Kha Nguyen",
   "license": "ISC",
   "devDependencies": {
@@ -33,19 +26,30 @@
     "tsc-files": "^1.1.4",
     "typescript": "^5.4.5"
   },
-  "lint-staged": {
-    "src/**/*.ts": [
-      "tsc-files --noEmit",
-      "eslint",
-      "npm run lint"
-    ]
-  },
   "nodemonConfig": {
     "delay": "3000",
     "exec": "node -r @swc-node/register src/index.ts",
     "ext": "ts,json",
     "watch": [
       "src/**/*.ts"
+    ]
+  },
+  "engines": {
+    "node": ">=18",
+    "vscode": "^1.62.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint '*/**/*.{json,ts}' --fix",
+    "lint-staged": "lint-staged",
+    "start": "node --enable-source-maps dist/index.js",
+    "start:dev": "nodemon"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "tsc-files --noEmit",
+      "eslint",
+      "npm run lint"
     ]
   }
 }

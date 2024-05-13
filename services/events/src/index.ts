@@ -1,5 +1,5 @@
 import { config } from "config";
-import { initDatabase, initServerExpress } from "../../shared";
+import { initDatabase, initServerExpress } from "shared";
 
 initDatabase("default", {
   host: config.POSTGRES_HOST,
@@ -12,5 +12,3 @@ initDatabase("default", {
 initServerExpress({
   logName: config.LOG_NAME,
 });
-
-console.log("ok");

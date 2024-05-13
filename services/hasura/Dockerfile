@@ -12,6 +12,11 @@ WORKDIR /
 
 ADD . .
 
+# download hasura-cli
 RUN curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | VERSION=v2.37.0 INSTALL_PATH=usr/bin bash
 RUN wget https://raw.githubusercontent.com/hgiasac/graphql-engine-migrate-dockerfile/main/migrate.sh \
     -O /migrate.sh
+
+RUN chmod +x /migrate.sh
+RUN chmod +x /usr/bin/hasura
+ENTRYPOINT ["sh", "/migrate.sh"]
