@@ -6,10 +6,12 @@ export const config = initConfig<{
   readonly POSTGRES_HOST: string;
   readonly POSTGRES_PORT: number;
   readonly POSTGRES_DB: string;
+  readonly LOG_NAME: string;
 }>({
   POSTGRES_USER: process.env.POSTGRES_USER,
   POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD,
   POSTGRES_HOST: process.env.POSTGRES_HOST,
   POSTGRES_PORT: Number(process.env.POSTGRES_PORT),
   POSTGRES_DB: process.env.POSTGRES_DB,
+  LOG_NAME: process.env.LOG_NAME,
 });

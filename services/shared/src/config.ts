@@ -1,4 +1,6 @@
 import { NodeEnv } from "backend-nexlab";
+import dotenv from "dotenv";
+dotenv.config();
 
 type ConfigBase = {
   readonly LOG_NAME: string;
@@ -6,7 +8,7 @@ type ConfigBase = {
   // readonly LEVEL_LOG_GOOGLE: string;
   // readonly GOOGLE_APPLICATION_CREDENTIALS: string;
   // readonly LEVEL_LOG: string;
-  readonly NODE_ENV: string;
+  readonly NODE_ENV: NodeEnv;
 };
 
 export const initConfig = <EnvType extends Record<string, string | number> & Partial<ConfigBase>>(
